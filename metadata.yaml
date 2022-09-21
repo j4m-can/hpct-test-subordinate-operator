@@ -1,0 +1,20 @@
+# Copyright 2022 Canonical Ltd.
+# See LICENSE file for licensing details.
+
+# For a complete list of supported options, see:
+# https://juju.is/docs/sdk/metadata-reference
+
+name: hpct-test-subordinate-operator
+display-name: |
+  HPCT Test Subordinate
+description: |
+  Subordinate test charm.
+summary: |
+  Subordinate test charm.
+
+subordinate: true
+
+requires:
+  test-ready:
+    interface: subordinate-ready
+    scope: container
