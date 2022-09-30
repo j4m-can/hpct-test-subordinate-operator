@@ -16,11 +16,9 @@ import logging
 
 from ops.main import main
 
-from hpctlib.interface.relation import interface_registry
-from hpctlib.misc import service_forced_update
-from hpctlib.ops.charm.service import ServiceCharm
-
-# from hpctlib.interface import interface_registry
+from hpctinterfaces.relation import interface_registry
+from hpctops.charm.service import ServiceCharm
+from hpctops.misc import service_forced_update
 
 
 logger = logging.getLogger(__name__)

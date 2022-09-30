@@ -5,7 +5,18 @@ type: "charm"
 bases:
   - build-on:
     - name: "ubuntu"
-      channel: "20.04"
+      channel: "22.04"
     run-on:
     - name: "ubuntu"
       channel: "22.04"
+
+parts:
+  charm:
+    override-build: |
+      # vendor packages
+      git --version || apt install -y git
+      rm -rf src/vendor hpctinterfaces hpctops
+      mkdir -p src/vendor
+      (cd src/vendor; git clone https://github.com/j4m-can/hpct-interfaces.git; cd ..; ln -sf vendor/hpct-interfaces/lib/hpctinterfaces .)
+      (cd src/vendor; git clone https://github.com/j4m-can/hpct-ops.git; cd ..; ln -sf vendor/hpct-interfaces/lib/hpctopss .)
+      craftctl default
